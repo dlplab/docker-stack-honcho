@@ -85,6 +85,8 @@ services:
       CACHE_URL: ${CACHE_URL:-redis://:${REDIS_PASSWORD}@honcho-redis:6379/0?suppress=true}
       VECTOR_STORE_TYPE: ${VECTOR_STORE_TYPE:-pgvector}
       VECTOR_STORE_MIGRATED: ${VECTOR_STORE_MIGRATED:-false}
+      DB_CONNECTION_URI: ${DB_CONNECTION_URI}
+      LLM_OPENAI_API_KEY: ${LLM_OPENAI_API_KEY}
     depends_on:
       honcho-api:
         condition: service_healthy
