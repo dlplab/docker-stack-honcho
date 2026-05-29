@@ -74,13 +74,11 @@ services:
     container_name: honcho-deriver
     restart: unless-stopped
     command: ["/app/.venv/bin/python", "-m", "src.deriver"]
-    env_file:
-      - .env
     environment:
-      CACHE_ENABLED: "true"
-      CACHE_URL: redis://:${REDIS_PASSWORD}@honcho-redis:6379/0?suppress=true
-      VECTOR_STORE_TYPE: pgvector
-      VECTOR_STORE_MIGRATED: "false"
+      - CACHE_ENABLED="true"
+      - CACHE_URL=redis://:${REDIS_PASSWORD}@honcho-redis:6379/0?suppress=true
+      - VECTOR_STORE_TYPE=pgvector
+      - VECTOR_STORE_MIGRATED="false"
     depends_on:
       honcho-api:
         condition: service_healthy
