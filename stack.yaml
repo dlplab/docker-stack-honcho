@@ -21,13 +21,25 @@ services:
     container_name: honcho-api
     restart: unless-stopped
     entrypoint: ["sh", "docker/entrypoint.sh"]
-    env_file:
-      - .env
     environment:
-      CACHE_ENABLED: "true"
-      CACHE_URL: redis://:${REDIS_PASSWORD}@honcho-redis:6379/0?suppress=true
-      VECTOR_STORE_TYPE: pgvector
-      VECTOR_STORE_MIGRATED: "false"
+      - HONCHO_BIND_IP=${HONCHO_BIND_IP:-127.0.0.1}
+      - HONCHO_PORT=${HONCHO_PORT:-8000}
+      - DB_CONNECTION_URI=${DB_CONNECTION_URI}
+      - POSTGRES_DB=${POSTGRES_DB}
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      - REDIS_PASSWORD=${REDIS_PASSWORD}
+      - AUTH_USE_AUTH=${AUTH_USE_AUTH}
+      - LLM_OPENAI_API_KEY=${LLM_OPENAI_API_KEY}
+      - VECTOR_STORE_TYPE=${VECTOR_STORE_TYPE}
+      - VECTOR_STORE_MIGRATED=${VECTOR_STORE_MIGRATED}
+      - LOG_LEVEL=${LOG_LEVEL}
+      - SENTRY_ENABLED=${SENTRY_ENABLED}
+      - FQDN_HONCHO=${FQDN_HONCHO}
+      - CACHE_ENABLED="true"
+      - CACHE_URL=redis://:${REDIS_PASSWORD}@honcho-redis:6379/0?suppress=true
+      - VECTOR_STORE_TYPE=pgvector
+      - VECTOR_STORE_MIGRATED="false"
     # ports:
     #   - "${HONCHO_BIND_IP:-127.0.0.1}:${HONCHO_PORT:-8000}:8000"
     labels:
