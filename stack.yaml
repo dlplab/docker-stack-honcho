@@ -68,6 +68,7 @@ services:
       start_period: 30s
     networks:
       - honcho
+      - frontend
 
   honcho-deriver:
     image: ghcr.io/plastic-labs/honcho:v3.0.7
@@ -110,3 +111,5 @@ networks:
   honcho:
     name: honcho
     driver: bridge
+  frontend:
+    external: true
