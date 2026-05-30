@@ -88,6 +88,7 @@ services:
       VECTOR_STORE_MIGRATED: ${VECTOR_STORE_MIGRATED:-false}
       DB_CONNECTION_URI: ${DB_CONNECTION_URI}
       LLM_OPENAI_API_KEY: ${LLM_OPENAI_API_KEY}
+      DERIVER_FLUSH_ENABLED: ${DERIVER_FLUSH_ENABLED:-false}
     depends_on:
       honcho-api:
         condition: service_healthy
