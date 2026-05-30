@@ -42,6 +42,7 @@ services:
       CACHE_ENABLED: ${CACHE_ENABLED:-true}
       CACHE_URL: ${CACHE_URL:-redis://:${REDIS_PASSWORD}@honcho-redis:6379/0?suppress=true}
       DERIVER_ENABLED: ${DERIVER_ENABLED:-true}
+      DERIVER_FLUSH_ENABLED: ${DERIVER_FLUSH_ENABLED:-false}
       SUMMARY_ENABLED: ${SUMMARY_ENABLED:-true}
       PEER_CARD_ENABLED: ${PEER_CARD_ENABLED:-true}
       DREAM_ENABLED: ${DREAM_ENABLED:-true}
